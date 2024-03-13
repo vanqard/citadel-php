@@ -24,10 +24,7 @@ use CitadelClient\SessionResolveRequest;
 $client = new HttpClient('https://api.citadel.example', 'your-pre-shared-key');
 
 // Prepare the session resolve request
-$request = new SessionResolveRequest();
-$request->cookieHeader = 'your-cookie-header';
-$request->clientId = 'your-client-id';
-$request->clientSecret = 'your-client-secret';
+$request = new SessionResolveRequest('your-cookie-header', 'your-client-id', 'your-client-secret');
 
 try {
     // Resolve the session
