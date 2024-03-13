@@ -1,0 +1,27 @@
+{
+  "name": "everluitonsk/citadel-client",
+  "description": "Client library for interacting with the Citadel API",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ivan Barlog",
+      "email": "ivan.barlog@everlution.sk"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/BeeSolve/citadel-php"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CitadelClient\\": "src/"
+    }
+  }
+}
