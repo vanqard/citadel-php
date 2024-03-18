@@ -1,7 +1,6 @@
 <?php
 namespace CitadelClient;
 
-
 class ResolveSessionResponse
 {
     public function __construct(
