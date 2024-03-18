@@ -10,8 +10,13 @@
     }
   ],
   "require": {
-    "php": "^7.0|^8.0",
-    "guzzlehttp/guzzle": "^7.0"
+    "php": "^8.0",
+    "psr/http-client": "^1.0",
+    "psr-discovery/http-factory-implementations": "*",
+    "psr-discovery/http-client-implementations": "*"
+  },
+  "suggest": {
+    "guzzlehttp/guzzle": "A PSR-18 compliant client package that also provides the necessary message factories"
   },
   "repositories": [
     {
