@@ -41,7 +41,7 @@ class ResolvedValue
 {
     public function __construct(
         public string $name,
-        public string | int | bool | null $value,
+        public mixed $value, // can be string | int | bool | null
         public string $from
     ) {
     }
