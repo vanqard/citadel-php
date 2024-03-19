@@ -1,5 +1,5 @@
 {
-  "name": "everluitonsk/citadel-client",
+  "name": "everlutionsk/citadel-client",
   "description": "Client library for interacting with the Citadel API",
   "type": "library",
   "license": "MIT",
@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": "^7.4|^8.0",
     "guzzlehttp/guzzle": "^6.0"
   },
   "repositories": [
@@ -20,8 +20,6 @@
     }
   ],
   "autoload": {
-    "psr-4": {
-      "CitadelClient\\": "src/"
-    }
+    "files": ["src/CitadelClient.php"]
   }
 }
