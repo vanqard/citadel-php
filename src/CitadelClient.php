@@ -4,117 +4,198 @@ namespace CitadelClient;
 
 class ResolveSessionResponse
 {
+    public ?ResolvedSession $session;
+    public Recommended $recommended;
+
     public function __construct(
-        public ?ResolvedSession $session,
-        public Recommended $recommended
+        ?ResolvedSession $session,
+        Recommended $recommended
     ) {
+        $this->session = $session;
+        $this->recommended = $recommended;
     }
 }
 
 class ResolvedSession
 {
+    public string $id;
+    public string $sid;
+    public array $identities;
+    public string $audience;
+    public \DateTime $issuedAt;
+    public \DateTime $refreshedAt;
+    public \DateTime $expiresAt;
+    public \DateTime $resolvedAt;
+
     public function __construct(
-        public string $id,
-        public string $sid,
-        public array $identities,
-        public string $audience,
-        public \DateTime $issuedAt,
-        public \DateTime $refreshedAt,
-        public \DateTime $expiresAt,
-        public \DateTime $resolvedAt
+        string $id,
+        string $sid,
+        array $identities,
+        string $audience,
+        \DateTime $issuedAt,
+        \DateTime $refreshedAt,
+        \DateTime $expiresAt,
+        \DateTime $resolvedAt
     ) {
+        $this->id = $id;
+        $this->sid = $sid;
+        $this->identities = $identities;
+        $this->audience = $audience;
+        $this->issuedAt = $issuedAt;
+        $this->refreshedAt = $refreshedAt;
+        $this->expiresAt = $expiresAt;
+        $this->resolvedAt = $resolvedAt;
     }
 }
 
 class ResolvedIdentity
 {
+    public string $id;
+    public \DateTime $assignedAt;
+    public string $user;
+    public array $data;
+
     public function __construct(
-        public string $id,
-        public \DateTime $assignedAt,
-        public string $user,
-        public array $data
+        string $id,
+        \DateTime $assignedAt,
+        string $user,
+        array $data
     ) {
+        $this->id = $id;
+        $this->assignedAt = $assignedAt;
+        $this->user = $user;
+        $this->data = $data;
     }
 }
 
 class ResolvedValue
 {
+    public string $name;
+    /**
+     * Intended to be one of string | int | bool | null
+     * @var mixed
+     */
+    public $value;
+    public string $from;
+
     public function __construct(
-        public string $name,
-        public mixed $value, // can be string | int | bool | null
-        public string $from
+        string $name,
+        $value,
+        string $from
     ) {
+        $this->name = $name;
+        $this->value = $value;
+        $this->from = $from;
+
     }
 }
 
 class MultiValueHeaders
 {
+    public array $headers;
+
     public function __construct(
-        public array $headers
+        array $headers
     ) {
+        $this->headers = $headers;
     }
 }
 
 class Recommended
 {
+    public string $action;
+    public MultiValueHeaders $responseHeaders;
+    public string $reason;
+
     public function __construct(
-        public string $action,
-        public MultiValueHeaders $responseHeaders,
-        public string $reason
+        string $action,
+        MultiValueHeaders $responseHeaders,
+        string $reason
     ) {
+        $this->action = $action;
+        $this->responseHeaders = $responseHeaders;
+        $this->reason = $reason;
     }
 }
 
 class SessionResolveRequest
 {
+    public string $cookieHeader;
+    public string $clientId;
+    public string $clientSecret;
+
     public function __construct(
-        public string $cookieHeader,
-        public string $clientId,
-        public string $clientSecret
+        string $cookieHeader,
+        string $clientId,
+        string $clientSecret
     ) {
+        $this->cookieHeader = $cookieHeader;
+        $this->clientId = $clientId;
+        $this->clientSecret = $clientSecret;
     }
 }
 
 class SessionResolveResponse
 {
+    public ?ResolvedSession $session;
+    public Recommended $recommended;
+
     public function __construct(
-        public ?ResolvedSession $session,
-        public Recommended $recommended
+        ?ResolvedSession $session,
+        Recommended $recommended
     ) {
+        $this->session = $session;
+        $this->recommended = $recommended;
     }
 }
 
 class SessionRevokeRequest
 {
+    public string $cookieHeader;
+    public string $clientId;
+    public string $clientSecret;
+
     public function __construct(
-        public string $cookieHeader,
-        public string $clientId,
-        public string $clientSecret
+        string $cookieHeader,
+        string $clientId,
+        string $clientSecret
     ) {
+        $this->cookieHeader = $cookieHeader;
+        $this->clientId = $clientId;
+        $this->clientSecret = $clientSecret;
     }
 }
 
 class SessionRevokeResponse
 {
+    public array $responseHeaders;
+
     public function __construct(
-        public array $responseHeaders
+        array $responseHeaders
     ) {
+        $this->responseHeaders = $responseHeaders;
     }
 }
 
 class SessionResolveBearerRequest
 {
+    public string $token;
+
     public function __construct(
-        public string $token
+        string $token
     ) {
+        $this->token = $token;
     }
 }
 
 class SessionResolveBearerResponse
 {
+    public ?ResolvedSession $session;
+
     public function __construct(
-        public ?ResolvedSession $session
+        ?ResolvedSession $session
     ) {
+        $this->session = $session;
     }
 }
 
