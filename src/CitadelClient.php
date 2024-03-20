@@ -54,17 +54,20 @@ class ResolvedIdentity
     public \DateTime $assignedAt;
     public string $user;
     public array $data;
+    public string $status;
 
     public function __construct(
         string $id,
         \DateTime $assignedAt,
         string $user,
-        array $data
+        array $data,
+        string $status
     ) {
         $this->id = $id;
         $this->assignedAt = $assignedAt;
         $this->user = $user;
         $this->data = $data;
+        $this->status = $status;
     }
 }
 
@@ -284,7 +287,8 @@ class HttpClient implements Client
                             $value['value'],
                             $value['from']
                         );
-                    }, $identity['data'])
+                    }, $identity['data']),
+                    $identity['status']
                 );
             }, $sessionData['identities']),
             $sessionData['audience'],
