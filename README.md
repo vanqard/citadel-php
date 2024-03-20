@@ -7,7 +7,7 @@ CitadelClient is a PHP library for interacting with the Citadel API.
 You can install this library via Composer:
 
 ```bash
-composer require everluitonsk/citadel-client
+composer require everlutionsk/citadel-client
 ```
 
 ## Usage
