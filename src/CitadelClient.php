@@ -202,6 +202,28 @@ class SessionResolveBearerResponse
     }
 }
 
+class SessionRevokeBearerRequest
+{
+    public string $token;
+
+    public function __construct(
+        string $token
+    ) {
+        $this->token = $token;
+    }
+}
+
+class SessionRevokeBearerResponse
+{
+    public string $status;
+
+    public function __construct(
+        string $status
+    ) {
+        $this->status = $status;
+    }
+}
+
 interface Client
 {
     public function sessionResolve(SessionResolveRequest $request): ResolveSessionResponse;
@@ -244,11 +266,19 @@ class HttpClient implements Client
 
     public function sessionResolveBearer(SessionResolveBearerRequest $request): SessionResolveBearerResponse
     {
-        return $this->sendRequest('/sessions.resolveBearer', $request, function ($responseData) {
+        return $this->sendRequest('/sessions.bearerResolve', $request, function ($responseData) {
             $session = isset($responseData['session']) ? $this->mapResolvedSession($responseData['session']) : null;
             return new SessionResolveBearerResponse($session);
         });
     }
+
+    public function sessionRevokeBearer(SessionRevokeBearerRequest $request): SessionRevokeBearerResponse
+    {
+        return $this->sendRequest('/sessions.bearerRevoke', $request, function ($responseData) {
+            return new SessionRevokeBearerResponse($responseData['status']);
+        });
+    }
+
 
     private function sendRequest(string $action, $request, callable $mapper)
     {
